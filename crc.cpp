@@ -15,4 +15,6 @@ uint16_t crc16(uint8_t *buffer, uint16_t buffer_length)
     }
 
     return (crc_hi << 8 | crc_lo);
+
 }
+//test 2018,4,12
