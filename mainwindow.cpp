@@ -153,3 +153,4 @@ void MainWindow::calculate_AS()
 
     //ui->airSpeedRT->setText(QString::number(0.2%,rt));
 }
+//sdafjlasdkjfl
