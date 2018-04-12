@@ -28,7 +28,7 @@ SrvClntComm::SrvClntComm(const QString &portName)
         }
         if (rirRes > 0)
         {
-            crcVal = crc16(tab_reg_8_le, 40);
+            /*crcVal = crc16(tab_reg_8_le, 40);
             qDebug() << "crcVal: " << crcVal;
             if (crcVal == tab_reg[20])
             {
@@ -53,7 +53,7 @@ SrvClntComm::SrvClntComm(const QString &portName)
                 m_dbm->close();
                 delete m_dbm;
                 break;
-            }
+            }*/
         }
         iCount++;
     }

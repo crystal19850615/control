@@ -107,7 +107,7 @@ SettingDialog::SettingDialog(QWidget *parent) :
         tableView->hideColumn(8);
         tableView->hideColumn(9);
         tableView->hideColumn(10);
-        //tableView->setItemDelegate();
+
         layout->addWidget(tableView);
         ui->stackedWidget->addWidget(page);
         pageComboBox->addItem("Group" + QString::number(i + 1));

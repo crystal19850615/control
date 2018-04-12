@@ -599,27 +599,39 @@
    <widget class="QLabel" name="airSpeedRT">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>130</y>
-      <width>221</width>
+      <x>50</x>
+      <y>100</y>
+      <width>271</width>
       <height>111</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;1.22&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;1.12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="airSpeedSet">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>60</x>
       <y>240</y>
-      <width>271</width>
-      <height>51</height>
+      <width>231</width>
+      <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt;&quot;&gt;0.51&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="minAirSpeedBtn">
@@ -703,7 +715,7 @@
    <widget class="QLabel" name="failureTip">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>10</x>
       <y>440</y>
       <width>131</width>
       <height>41</height>

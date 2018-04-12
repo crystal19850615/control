@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(commTimer, SIGNAL(timeout()), m_scc, SLOT(updateFromClnt()));
     commTimer->setInterval(20);
     commTimer->start();
-    //connect(dispTimer, SIGNAL(timeout()), this, SLOT(calculate_AS()));
+    connect(dispTimer, SIGNAL(timeout()), this, SLOT(calculate_AS()));
     dispTimer->setInterval(20);
     dispTimer->start();
 }
@@ -102,25 +102,54 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
     }
     return false;
 }
+double MainWindow::GetParameter(const QString &ParameterName)
+{
+    QSqlQuery *queryRes;
+    QString   strQuery;
+
+    strQuery = "select val from confNew where name = " + ParameterName;
+    queryRes = m_dbm->query(strQuery);
+    queryRes->next();
+    return queryRes->value("val").toDouble();
+
+}
 
 void MainWindow::calculate_AS()
 {
     QSqlQuery *queryRes;
     QString strUpdate;
     double fASL;
+    double FactorySetingUpLimit,FactorySetingLowLimit;
+    double UserSetingUpLimit,UserSetingLowLimit;
+    double FengSu,AirSv1,AirSv2,AirSv3;
 
     m_scc->val1 = 0;
     int rt = m_scc->m_rtAS;
+
     m_dbm = new DbManager(m_dbPath, "calculate_AS");
     QString strQuery = "select val from confNew where name = \"10V-L\"";
     queryRes = m_dbm->query(strQuery);
     queryRes->next();
     fASL = queryRes->value("val").toDouble();
     m_fRTAS = fASL;
+
+    FactorySetingLowLimit = GetParameter("\"10V-L\"");
+    FactorySetingUpLimit = GetParameter("\"10V-H\"");
+    UserSetingLowLimit   = GetParameter("\"AirU-r\"");
+    UserSetingUpLimit    = GetParameter("\"AirF-r\"");
+
+    AirSv1    = GetParameter("\"AirSv1\"");
+    AirSv2    = GetParameter("\"AirSv2\"");
+    AirSv3    = GetParameter("\"AirSv3\"");
+
     queryRes->clear();
     delete queryRes;
     m_dbm->close();
-    ui->airSpeedRT->setText(QString::number(rt));
+
+    FengSu = (rt - FactorySetingLowLimit) / (FactorySetingUpLimit - FactorySetingLowLimit) * (UserSetingUpLimit - UserSetingLowLimit);
+    if(FengSu < 0) FengSu = 0;
+    ui->airSpeedRT->setText(QString::number(FengSu,'f',2));
+    ui->airSpeedSet->setText(QString::number(AirSv1,'f',2));
+
+    //ui->airSpeedRT->setText(QString::number(0.2%,rt));
 }
-
-
