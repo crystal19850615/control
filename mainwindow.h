@@ -38,6 +38,7 @@ private slots:
     void update();
     void on_settingButton_clicked();
     void calculate_AS();
+    void on_maxAirSpeedBtn_clicked();
 };
 
 #endif // MAINWINDOW_H

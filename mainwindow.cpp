@@ -111,7 +111,6 @@ double MainWindow::GetParameter(const QString &ParameterName)
     queryRes = m_dbm->query(strQuery);
     queryRes->next();
     return queryRes->value("val").toDouble();
-
 }
 
 void MainWindow::calculate_AS()
@@ -153,4 +152,10 @@ void MainWindow::calculate_AS()
 
     //ui->airSpeedRT->setText(QString::number(0.2%,rt));
 }
-//sdafjlasdkjfl
+
+
+
+void MainWindow::on_maxAirSpeedBtn_clicked()
+{
+
+}
